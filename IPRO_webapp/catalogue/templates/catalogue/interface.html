@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Catalogue Page</title>
+    <div class=" content-section">
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Browse or Search Catalogue </legend>
+            </fieldset>
+            <div class="form-group">
+                 <!-- I couldn't figure out way to have these as working buttons; if you can resolve this then modify file accordingly --> 
+                 <a class="ml-2" href="{% url 'browse' %}">Browse Catalogue</a>
+            </div>
+        </form>
+        <div class="border-top pt-3">
+            <small class="text-muted">
+             Finished? <a class="ml-2" href="{% url 'account' %}">Return to Acct Home</a>
+            </small>
+        </div>
+    </div>
+
+</head>
+<body>
+  
+</body>
+</html> 

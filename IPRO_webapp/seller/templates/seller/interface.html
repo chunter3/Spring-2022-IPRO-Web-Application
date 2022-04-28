@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Seller Page</title>
+    <div class=" content-section">
+        {% if messages %}
+           {% for message in messages %}
+              <div class="alert alert-{{ message.tags }}">
+                  {{ message }}
+              </div>
+            {% endfor %}
+        {% endif %}
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                <legend class="border-bottom mb-4">Upload a Textbook Or Msg Others </legend>
+            </fieldset>
+            <div class="form-group">
+                <!-- <button class="btn btn-outline-info" type="button" value="#">Upload Textbook</button> -->
+                 <!-- <button class="btn btn-outline-info" type="submit" value="#">Msg Users</button> -->  <!-- replace '#' in value when Msg system is functioning -->
+                 <!-- I couldn't figure out way to have these as working buttons; if you can resolve this then modify file accordingly --> 
+                 <a class="ml-2" href="{% url 'uploadtext' %}">Upload a Textbook</a>
+                 <a class="ml-2" href="#">Msg Others</a> <!-- modify href once msg system is finished -->
+            </div>
+        </form>
+        <div class="border-top pt-3">
+            <small class="text-muted">
+             Finished? <a class="ml-2" href="{% url 'account' %}">Return to Acct Home</a>
+            </small>
+        </div>
+    </div>
+
+</head>
+<body>
+  
+</body>
+</html> 

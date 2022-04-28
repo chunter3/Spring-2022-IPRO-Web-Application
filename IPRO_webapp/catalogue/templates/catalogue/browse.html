@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+form {text-align: center;}
+</style>
+<div class=" content-section">
+    {% if messages %}
+       {% for message in messages %}
+          <div class="alert alert-{{ message.tags }}">
+              {{ message }}
+          </div>
+        {% endfor %}
+    {% endif %} 
+</div>
+<div class="container">
+    <form class="d-flex" action="{% url 'search' %}" method="POST">
+
+        {% csrf_token %}
+
+        <input type="search" placeholder="Search By Title, Author, or ISBN" name="searchresults"/>
+        <button type="submit">Search</button>
+    </form>
+
+    <form class="d-flex" action="{% url 'wishlistform' %}" method="POST">
+
+        {% csrf_token %}
+         
+    <button type="submit">Add to Your Wishlist</button>
+
+    </form>
+   
+    
+    {% block content %}
+    
+         <h1>Catalogue List</h1>
+
+    {% for textbook in textbook_list %}
+
+            <strong>{{ textbook }}</strong>
+
+            <ul>
+            <li>Author: {{ textbook.author }}</li>
+            <li>ISBN: {{ textbook.isbn }}</li>
+            <li>Price: {{ textbook.price }}</li>
+        
+            </ul>
+            </br>
+
+    {% endfor %}
+    
+    {% endblock %}
+
+<div class="border-top pt-3">
+    <small class="text-muted">
+        Finished? <a class="ml-2" href="{% url 'account' %}">Return to Acct Home</a>
+    </small>
+</div>
+
+</div>
+</head>
+</html>

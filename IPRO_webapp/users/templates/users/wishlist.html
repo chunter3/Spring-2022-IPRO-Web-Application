@@ -1,0 +1,33 @@
+{{ error }}
+
+<style>
+    h1 {text-align: center;}
+</style>
+
+<h1> Welcome to your Wishlist!</h1>
+<br>
+{% if wishlist %}
+
+{% for textbook in wishlist.textbooks.all %}
+
+   <strong>{{ textbook }}</strong>
+   <ul>
+   <li>Author: {{ textbook.author }}</li>
+   <li>ISBN: {{ textbook.isbn }}</li>
+   <li>Price: {{ textbook.price }}</li>
+   
+   </ul>
+   </br>
+{% endfor %}
+
+{% else %}
+
+   <h2>No books wishlisted</h2>
+
+{% endif %}
+
+<div class="border-top pt-3">
+    <small class="text-muted">
+     Finished? <a class="ml-2" href="{% url 'account' %}">Return to Acct Home</a>
+    </small>
+</div>

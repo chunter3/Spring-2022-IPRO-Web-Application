@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en" id="user-role">
+  <head>
+    <div class=" content-section">
+      {% if messages %}
+         {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">
+                {{ message }}
+            </div>
+          {% endfor %}
+      {% endif %} 
+  </div>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,shrink-to-fit=no" />
+    <link rel="stylesheet" href="../screen.css"/>
+    <title>Books4U</title>
+  </head>
+  <body>
+    <header>
+      <h1 id="site-name">Books4U</h1>
+      <figure>
+        <img id="logo" src="" alt="Books4U logo">
+      </figure>
+    </header>
+
+
+    <main>
+      <aside class="" id="user-header">
+        <ul class="flex-container">
+        <li>
+          <figure>
+          <img src="" alt="university official logo" class ="flex-item" id="university-logo"/>
+        </figure>
+        </li>
+        <li>
+          <figure>
+            <a href="../account-settings"><img src="" alt="icon to access account settings"
+              id="my-account" class="grid-item"/></a>
+          </figure>
+          <figcaption>My Account</figcaption>
+        </li>
+        </ul>
+      </aside>
+      <p>Hi {{request.user}}, what are you looking for?</p>
+      <form class="" action="../home" method="get">
+        <button type="submit" name="button" id="buyer-button" value="#">BUYER</button>  <!-- Replace '#' in value once buyer is functioning -->
+        <button type="submit" name="button" id="seller-button" value="{% url 'seller' %}">SELLER</button>
+        <!-- I couldn't figure out way to have these as working buttons; if you can resolve this then modify file accordingly --> 
+        <a class="ml-2" href="{% url 'catalogue' %}">CATALOGUE</a>
+        <a class="ml-2" href="{% url 'wishlist' %}">WISHLIST</a>
+        <a class="ml-2" href="{% url 'repfraud' %}">REPORT FRAUD</a>
+        <a id="messages-button" class="button" href="{% url 'Messages' %}">MESSAGES</a>
+      </form>
+    </main>
+
+    <footer id="footer">
+      <p>Site content and design copyright TeamK "IPRO: Global Product Development",
+        Illinois Institute of Technology, Spring 2022</p>
+    </footer>
+
+  </body>
+</html>

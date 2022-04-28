@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+form {text-align: center;}
+</style>
+
+<title>Add to Your Wishlist</title>
+    {% load crispy_forms_tags %}
+    <div class=" content-section">
+        <form method="POST">
+            {% csrf_token %}
+            <fieldset class="form-group">
+                {{ form|crispy }}
+            </fieldset>
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit" value="{% url 'browse' %}">Add</button>
+            </div>
+        </form>
+   
+    {% block content %}
+    
+         <h1>Catalogue List</h1>
+
+    {% for textbook in textbook_list %}
+
+            <strong>{{ textbook }}</strong>
+
+            <ul>
+            <li>Author: {{ textbook.author }}</li>
+            <li>ISBN: {{ textbook.isbn }}</li>
+            <li>Price: {{ textbook.price }}</li>
+        
+            </ul>
+            </br>
+
+    {% endfor %}
+    
+    {% endblock %}
+
+<div class="border-top pt-3">
+    <small class="text-muted">
+        Changed Your Mind? <a class="ml-2" href="{% url 'browse' %}">Return to Catalogue</a>
+    </small>
+</div>
+
+</div>
+</head>
+</html>
